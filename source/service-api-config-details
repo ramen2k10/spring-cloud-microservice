@@ -1,1 +1,26 @@
+Eurek Server Name: bookmanagement-naming-server
+Port: 8778
+Url: http://localhost:8778/
+
+Spring Cloud Config Server Name: BOOK-CLOUD-CONFIG-SERVICE
+Port: 7777
+
+Book Info Service Name: book-service
+Doc URL - http://localhost:7001/swagger-ui/index.html#/
+port: 7001
+URL's 
+GET -> http://localhost:7001/api/books (All)
+	   http://localhost:7001/api/book/Java3 (Find by Book Name)
+
+Book Review Service Name: book-review-service
+Port: 8001
+URL'
+GET ->	http://localhost:8001/api-feign/book/Java1/reviews
+
+Book API Gateway: BOOKAPI-GATEWAY
+Port: 7788
+URL:
+	http://localhost:7788/book-service/api/book/Java3
+	http://localhost:7788/book-service/api/books
+	http://localhost:7788/book-review-service/api-feign/book/Java1/reviews
 
