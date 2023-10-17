@@ -28,7 +28,7 @@ public class BookManagementServiceImpl implements BookManagementService{
     }
 
     @Override
-    public Book findBookInfoByName(String bookName) {
+    public Book findBookInfoByBookName(String bookName) {
         return bookManagementRepository.findByBookName(bookName);
     }
 

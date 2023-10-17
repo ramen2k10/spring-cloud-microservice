@@ -26,7 +26,7 @@ public class Book extends RepresentationModel<Book>{
 
     }
     
-    public Book(Integer id, @JsonProperty("BookName") String bookName, String author, String category, String bookDescription, String publicationDate) {
+    public Book(Integer id, String bookName, String author, String category, String bookDescription, String publicationDate) {
         this.id = id;
         this.bookName = bookName;
         this.author = author;

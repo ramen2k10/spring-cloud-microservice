@@ -10,6 +10,6 @@ import com.codebuzz.bookmanagement.bookreviewservice.model.BookReview;
 @FeignClient(name = "book-service")
 public interface BookServiceProxy {
     
-    @GetMapping("api/book/{bookName}")
-    public BookReview retrieveBookByName(@PathVariable String bookName);   
+    @GetMapping("api/find-book/{bookName}")
+    public BookReview findBookByBookName(@PathVariable String bookName);
 }

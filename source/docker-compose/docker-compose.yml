@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  book-service:
+    image: ramen2k/bookmgnt-book-info-service:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "7001:7001"
+    depends_on:
+      - bookmanagement-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://bookmanagement-naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411
+
+  bookmanagement-naming-server:
+    image: ramen2k/bookmgnt-bookmanagement-eureka-server:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8761:8761"
+  
+  review-service:
+    image: ramen2k/bookmgnt-book-review-service:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8001:8001"
+    depends_on:
+      - bookmanagement-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://bookmanagement-naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411
+  
+  BookAPI-Gateway:
+    image: ramen2k/bookmgnt-bookmanagement-api-gateway:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "7788:7788"
+    depends_on:
+      - bookmanagement-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://bookmanagement-naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411
+  
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    mem_limit: 700m
+    ports:
+      - "9411:9411"
