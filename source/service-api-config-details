@@ -1,6 +1,6 @@
 Eurek Server Name: bookmanagement-naming-server
-Port: 8778
-Url: http://localhost:8778/
+Port: 8761
+Url: http://localhost:8761/
 
 Spring Cloud Config Server Name: BOOK-CLOUD-CONFIG-SERVICE
 Port: 7777
@@ -22,5 +22,14 @@ Port: 7788
 URL:
 	http://localhost:7788/book-service/api/book/Java3
 	http://localhost:7788/book-service/api/books
-	http://localhost:7788/book-review-service/api-feign/book/Java1/reviews
+	http://localhost:7788/review-service/api-feign/book/Java1/reviews
 
+ZepKin service - 9411:9411 openzipkin/zipkin:2.23
+URL - http://localhost:9411/zipkin
+
+Docker commands:
+	maven build -  mvn spring-boot:build-image
+	start any service - docker run -d -p 9411:9411 openzipkin/zipkin:2.23
+	run docker compose - docker-compose up
+	stop docker container - docker stop container_ID
+	list of container running - docker ps
